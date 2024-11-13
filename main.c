@@ -4,12 +4,12 @@
 #include <string.h>
 
 // Select interpreter mode:
-//#define USE_DTC             // Direct Threaded Code
+#define USE_DTC             // Direct Threaded Code
 //#define USE_TTC           // Token (Indirect) Threaded Code
 //#define USE_SWITCH        // Switching
 //#define USE_TAIL_CALLS    // Tail Calls
 //#define USE_CALLS         // Calls Loop
-#define USE_INLINE        // Machine Code Inlining
+//#define USE_INLINE        // Machine Code Inlining
 
 //#define DUMP 1
 
@@ -29,7 +29,7 @@ void** example_0(void** vPC)
     return vPC;
 }
 
-#define LOOP_COUNT 100*1000000
+#define LOOP_COUNT 1000000000
 
 void** example_1(void** vPC)
 {
@@ -47,7 +47,7 @@ void** example_1(void** vPC)
         JNZ(loop);
     HALT();
 
-    DBG_PRINTF("Instructions: %d\n", LOOP_COUNT*10);
+    DBG_PRINTF("Instructions: %lld\n", LOOP_COUNT*10LL);
 
     return vPC;
 }
